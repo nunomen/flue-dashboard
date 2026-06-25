@@ -1,10 +1,9 @@
 # flue-dashboard
 
-Planning repository for a Flue workflow-run dashboard plugin.
+Implementation repository for a Flue workflow-run dashboard plugin.
 
-This repository intentionally contains no implementation code yet. It captures
-the agreed scope, architecture, and implementation skeleton for a future
-Vue-based dashboard package targeting the latest Flue runtime.
+This repository contains the initial Vue/Hono package scaffold for a workflow
+run dashboard targeting the latest Flue runtime.
 
 ## Scope
 
@@ -25,9 +24,29 @@ Agent session browsing is out of scope for the MVP. See
 - Server integration: Hono sub-app
 - Frontend: Vue 3, TypeScript, Vite, Composition API, `<script setup>`
 
+## Current Implementation
+
+- `flueDashboard(options)` Hono sub-app with auth required by default
+- dashboard API routes for health, run list, run detail, events, and optional
+  stream proxy
+- shared DTOs, event normalization, usage aggregation, and redaction helpers
+- Vue dashboard shell with run filters, run table, run detail, timeline,
+  waterfall, logs, and raw redacted event drawer
+- Vitest coverage for normalization, redaction, and server route behavior
+
+## Development
+
+```sh
+npm install
+npm run typecheck
+npm run test
+npm run build
+```
+
 ## Documents
 
 - [Requirements](docs/requirements.md)
 - [Implementation Plan](docs/implementation-plan.md)
+- [Installation](docs/install.md)
+- [Security Notes](docs/security.md)
 - [Future Agent Sessions](docs/future-agent-sessions.md)
-

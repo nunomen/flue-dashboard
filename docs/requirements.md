@@ -31,9 +31,8 @@
 
 ## Non-Goals
 
-- No implementation code in this planning commit.
 - No custom telemetry backend for MVP.
+- No Flue CLI or Vite plugin implementation.
 - No agent-session index in MVP.
 - No direct browser access to privileged Flue inspection APIs.
 - No dependency on private Flue SQL tables or generated internals.
-

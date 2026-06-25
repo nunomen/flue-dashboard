@@ -1,0 +1,56 @@
+{
+  "name": "flue-dashboard",
+  "version": "0.0.0",
+  "description": "Hono-mounted Vue dashboard for inspecting Flue workflow runs.",
+  "type": "module",
+  "private": true,
+  "files": [
+    "dist",
+    "README.md",
+    "docs"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.js"
+    },
+    "./shared": {
+      "types": "./dist/shared/index.d.ts",
+      "import": "./dist/shared/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "vite --config vite.dashboard.config.ts",
+    "build": "npm run build:dashboard && npm run build:assets && npm run build:server",
+    "build:dashboard": "vite build --config vite.dashboard.config.ts",
+    "build:assets": "node scripts/embed-dashboard-assets.mjs",
+    "build:server": "vue-tsc --noEmit -p tsconfig.app.json && tsc -p tsconfig.build.json",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "peerDependencies": {
+    "@flue/runtime": ">=1.0.0-beta.6 <2",
+    "hono": ">=4 <5"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/tsconfig": "^0.9.1",
+    "happy-dom": "^20.10.6",
+    "hono": "^4.12.27",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.0",
+    "vitest": "^4.1.9",
+    "vue": "^3.5.39",
+    "vue-tsc": "^3.3.5"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
