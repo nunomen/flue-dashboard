@@ -32,6 +32,7 @@
     "build:server": "vue-tsc --noEmit -p tsconfig.app.json && tsc -p tsconfig.build.json",
     "typecheck": "vue-tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.build.json",
     "test": "vitest run",
+    "test:e2e": "playwright test",
     "test:watch": "vitest"
   },
   "peerDependencies": {
@@ -40,7 +41,9 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/test-utils": "^2.4.11",
     "@vue/tsconfig": "^0.9.1",
     "happy-dom": "^20.10.6",
     "hono": "^4.12.27",

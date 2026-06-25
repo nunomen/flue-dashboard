@@ -28,7 +28,7 @@ export function flueDashboard(options: FlueDashboardOptions = {}): Hono {
 
   app.get('/api/runs', async (context) => {
     const runtime = requireRuntime(context, options.runtime)
-    if (!runtime) return context.res
+    if (runtime instanceof Response) return runtime
 
     const limit = readLimit(context.req.query('limit'))
     const rawRuns = extractCollection(await runtime.listRuns(), ['runs', 'items', 'data'])
@@ -39,7 +39,7 @@ export function flueDashboard(options: FlueDashboardOptions = {}): Hono {
 
   app.get('/api/runs/:runId', async (context) => {
     const runtime = requireRuntime(context, options.runtime)
-    if (!runtime) return context.res
+    if (runtime instanceof Response) return runtime
 
     const runId = context.req.param('runId')
     const rawRun = await runtime.getRun(runId)
@@ -53,7 +53,7 @@ export function flueDashboard(options: FlueDashboardOptions = {}): Hono {
 
   app.get('/api/runs/:runId/events', async (context) => {
     const runtime = requireRuntime(context, options.runtime)
-    if (!runtime) return context.res
+    if (runtime instanceof Response) return runtime
 
     const runId = context.req.param('runId')
     const limit = readLimit(context.req.query('limit'))
@@ -65,7 +65,7 @@ export function flueDashboard(options: FlueDashboardOptions = {}): Hono {
 
   app.get('/api/runs/:runId/stream', async (context) => {
     const runtime = requireRuntime(context, options.runtime)
-    if (!runtime) return context.res
+    if (runtime instanceof Response) return runtime
 
     if (!runtime.streamRunEvents) {
       return jsonError(context, 501, 'Run event streaming is not configured for this dashboard.')
@@ -129,10 +129,9 @@ function serveAsset(context: Context, assetPath: string): Response {
   })
 }
 
-function requireRuntime(context: Context, runtime: DashboardRuntimeSource | undefined): DashboardRuntimeSource | null {
+function requireRuntime(context: Context, runtime: DashboardRuntimeSource | undefined): DashboardRuntimeSource | Response {
   if (!runtime) {
-    jsonError(context, 501, 'Flue runtime source is not configured.')
-    return null
+    return jsonError(context, 501, 'Flue runtime source is not configured.')
   }
 
   return runtime
