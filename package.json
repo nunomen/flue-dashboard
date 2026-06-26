@@ -5,6 +5,10 @@
   "type": "module",
   "private": false,
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nunomen/flue-dashboard.git"
+  },
   "files": [
     "dist",
     "README.md",
@@ -12,6 +16,9 @@
     "LICENSE",
     "NOTICE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
