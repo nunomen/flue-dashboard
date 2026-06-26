@@ -1,6 +1,6 @@
 {
   "name": "@nunomen/flue-dashboard",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Hono-mounted Vue dashboard for inspecting Flue workflow runs.",
   "type": "module",
   "private": false,
