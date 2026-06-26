@@ -5,7 +5,7 @@ application.
 
 ```ts
 import { Hono } from 'hono'
-import { flueDashboard } from 'flue-dashboard'
+import { flueDashboard } from '@nunomen/flue-dashboard'
 
 const app = new Hono()
 

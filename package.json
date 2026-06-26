@@ -1,13 +1,16 @@
 {
-  "name": "flue-dashboard",
+  "name": "@nunomen/flue-dashboard",
   "version": "0.0.0",
   "description": "Hono-mounted Vue dashboard for inspecting Flue workflow runs.",
   "type": "module",
-  "private": true,
+  "private": false,
+  "license": "Apache-2.0",
   "files": [
     "dist",
     "README.md",
-    "docs"
+    "docs",
+    "LICENSE",
+    "NOTICE"
   ],
   "exports": {
     ".": {
@@ -30,6 +33,7 @@
     "build:dashboard": "vite build --config vite.dashboard.config.ts",
     "build:assets": "node scripts/embed-dashboard-assets.mjs",
     "build:server": "vue-tsc --noEmit -p tsconfig.app.json && tsc -p tsconfig.build.json",
+    "prepack": "npm run build",
     "typecheck": "vue-tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.build.json",
     "test": "vitest run",
     "test:e2e": "playwright test",

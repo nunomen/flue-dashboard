@@ -1,0 +1,8 @@
+@nunomen/flue-dashboard
+Copyright 2026 Nuno Mendes
+
+This project is an unofficial dashboard package for Flue.
+
+Flue packages from withastro/flue are licensed under the Apache License,
+Version 2.0:
+https://github.com/withastro/flue/blob/main/LICENSE
